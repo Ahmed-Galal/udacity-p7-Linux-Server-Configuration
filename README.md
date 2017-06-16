@@ -33,7 +33,7 @@ IP address, URL, summary of software installed, summary of configurations made, 
 ## step by step
 - install ubunut 
 - add user grader  ``` useradd grader ```
-- give grader sudo with out password 
+- give grader root privilege with out password 
 ```
 vim /etc/sudors.d/grader 
 #insert in fill grader 
@@ -46,5 +46,27 @@ from pc you want to ssh connect
 ssh-keygen
 type ~/grader
 will genrate two files
+grader which is key 
+and grader.pub wich is public key
+copy public key conntent and 
+touch file authorized_keys at this path /home/grader/.ssh
+past puplic key into the touched file 
+```
+- change ssh port to 2200 stop root remote connect
+force key authorization over password
+```
+sudo vim  /etc/ssh/sshd_config
+change Posrt 22 to any number here we will make it 2200.
+change PermitRootLogin yes to 
+PermitRootLogin no
+
+```
+try to connect to the machine via ssh 
+```
+ssh grader@machineIP -p 2200 -i path-to-grader(the key you generated)
+
+```
+- you can find and download my key at this repo
+
 
  
