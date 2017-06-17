@@ -86,7 +86,23 @@ sudo apt-get upgrade
 ```
 ## installing postgress
 - sudo apt-get install postgresql
+- if you have problem installing go to this [link](https://www.postgresql.org/download/linux/ubuntu/)
+- add user and make database
+```
+$ sudo -su postgres
+$psql
+>CREATE USER graderdb WITH PASSWORD 'pasword';
+>CREATE DATABASE catalogdb;
+>GRANT ALL ON DATABASE catalogdb TO  mohy ;
+>/q
+$exit
+```
+- now change your flask app connection to data base as like 
 
+```
+url = "postgresql://graderdb:pasword@localhost:5432/catalogdb"
+engine = create_engine(url)
+```
 ## installing apache2 and configure it to run flask project 
 - install apache
 ``` 
