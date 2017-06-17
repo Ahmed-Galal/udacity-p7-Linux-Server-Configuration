@@ -2,7 +2,8 @@
 
 ## content
 - [overview](#overview)
-- [software installed](#software)
+- [software installed](#software-installed)
+- [step by step](step-by-step)
 
 IP address, URL, summary of software installed, summary of configurations made, and a list of third-party resources used to completed this project.
 
@@ -26,12 +27,11 @@ IP address, URL, summary of software installed, summary of configurations made, 
  </table>
  
  ## software installed 
- 
- 
 - apache2 
-
+- postgresql
+- tree
 ## step by step
-- install ubunut 
+#### install ubunut
 - add user grader  ``` useradd grader ```
 - give grader root privilege with out password 
 ```
@@ -39,20 +39,18 @@ vim /etc/sudors.d/grader
 #insert in fill grader 
 grader ALL=(ALL:ALL) NOPASSWD:ALL
 ```
-- enable ssh connect for grader
+#### enable ssh connect for grader
 
-```
-from any pc terminal 
-ssh-keygen
+- from any pc terminal 
+``` ssh-keygen ```
 will ask you for path 
-type ~/grader
+type ```~/grader```
 will genrate two files
 grader which is key 
 and grader.pub wich is public key
 copy public key conntent and 
-touch file authorized_keys at this path /home/grader/.ssh
+touch file authorized_keys at this path ```/home/grader/.ssh```
 past puplic key into the touched file 
-```
 - change ssh port to 2200 stop root remote connect
 force key authorization over password
 ```
@@ -63,29 +61,23 @@ PermitRootLogin no
 # Change to no to disable tunnelled clear text passwords
 PasswordAuthentication no
 
-
 ```
-try to connect to the machine via ssh 
+- try to connect to the machine via ssh 
 ```
 ssh grader@machineIP -p 2200 -i path-to-grader(the key you generated)
 
 ```
 - you can find and download my key at this repo
-- setting up firewall 
-1-  sudo ufw default deny incoming
-2- sudo ufw default allow outgoing
-3- sudo ufw allow 2200/tcp   >>> ssh allow 
-4- sudo ufw allow www    >>> http allow 
-5- sudo ufw allow 123/udp >>> NTP allow
-6- sudo ufw enable
+#### setting up firewall 
+1- ```sudo ufw default deny incoming```
+2- ```sudo ufw default allow outgoing```
+3- ```sudo ufw allow 2200/tcp ```  >>> ssh allow 
+4- ```sudo ufw allow www    ```>>> http allow 
+5- ```sudo ufw allow 123/udp ```>>> NTP allow
+6- ```sudo ufw enable```
 
-- upgrade system packages 
-```
-sudo apt-get update 
-sudo apt-get upgrade
-```
-## installing postgress
-- sudo apt-get install postgresql
+#### installing postgress
+- ```sudo apt-get install postgresql```
 - if you have problem installing go to this [link](https://www.postgresql.org/download/linux/ubuntu/)
 - add user and make database
 ```
@@ -193,7 +185,11 @@ sudo a2ensite catalog
 sudo service apache2 reload
 ```
 
-
+#### upgrade system packages 
+```
+sudo apt-get update 
+sudo apt-get upgrade
+```
 
 
 
