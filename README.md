@@ -69,6 +69,7 @@ ssh grader@machineIP -p 2200 -i path-to-grader(the key you generated)
 ```
 - you can find and download my key at this repo
 #### setting up firewall 
+### for more security info see about ufw [this link](https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands)
 1- ```sudo ufw default deny incoming```
 2- ```sudo ufw default allow outgoing```
 3- ```sudo ufw allow 2200/tcp ```  >>> ssh allow 
